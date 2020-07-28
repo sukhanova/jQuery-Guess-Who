@@ -37,6 +37,7 @@ $(document).ready(readyNow);
 function readyNow(){
     appendUserImages(people);
     guessWho(people);
+    $('#userImage').on('click', '.userPicture', getAnswer);
     
     //appendUserImages();
 
@@ -56,7 +57,7 @@ function appendUserImages(people){
     for (let i = 0; i < people.length; i++){
         let appendUserInfo = [];
         appendUserInfo +=$('#userImage').append(`
-        <img id ="primePic${i}" img src="https://github.com/${people[i].githubUsername}.png?size=250"
+        <img id ="primePic${i}" class="userPicture" data-person="${people[i].name}" src="https://github.com/${people[i].githubUsername}.png?size=250"
         alt="Profile image of ${people[i].name}">
         `);
         $('#userImage').append(appendUserImages);
@@ -67,4 +68,14 @@ function appendUserImages(people){
 function guessWho(people){
   questionNumberAsked = Math.floor(Math.random() * people.length);
   $('h2').text(`Which GitHub user is: ${people[questionNumberAsked].name} ?`);
+}
+
+
+function getAnswer(){
+  //console.log($(this).data());
+  if(questionNumberAsked === $(this).parent().data()){
+    alert('You guessed right!');
+  } else{
+    alert('Try more!');
+  }
 }
