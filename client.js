@@ -64,7 +64,7 @@ function appendUserImages(people){
     
 }
 
-function guessWho(){
+function guessWho(people){
   questionNumberAsked = Math.floor(Math.random() * people.length);
-  $('h2').text(`Which GitHub user is: ${people[questionNumber].name} ?`);
+  $('h2').text(`Which GitHub user is: ${people[questionNumberAsked].name} ?`);
 }
