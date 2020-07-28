@@ -27,4 +27,5 @@ var people = [
     name: 'Chris',
     githubUsername: 'christopher-black'
   },
+
 ];
