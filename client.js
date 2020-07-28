@@ -1,5 +1,7 @@
 console.log('Here are all the available people:', people);
 
+let questionNumberAsked;
+
 var people = [
     {
       name: 'Dev',
@@ -34,6 +36,7 @@ $(document).ready(readyNow);
 
 function readyNow(){
     appendUserImages(people);
+    guessWho(people);
     
     //appendUserImages();
 
@@ -46,12 +49,22 @@ function readyNow(){
     // $('#userImage').append(`<div><img src="https://github.com/christopher-black.png?size=250" alt="Profile image of Chris"></div>`);
 }
 
-function appendUserImages(array){
+
+
+function appendUserImages(people){
     //console.log('in appendUserImages');
-    for (let i = 0; i < array.length; i++){
-        let appendUserInfo = `<div>
-                             <img src="https://github.com/array[i].${githubUsername}.png alt="Profile image of array[i].${name}</div>`;
+    for (let i = 0; i < people.length; i++){
+        let appendUserInfo = [];
+        appendUserInfo +=$('#userImage').append(`
+        <img id ="primePic${i}" img src="https://github.com/${people[i].githubUsername}.png?size=250"
+        alt="Profile image of ${people[i].name}">
+        `);
+        $('#userImage').append(appendUserImages);
     }
     
 }
 
+function guessWho(){
+  questionNumberAsked = Math.floor(Math.random() * people.length);
+  $('h2').text(`Which GitHub user is: ${people[questionNumber].name} ?`);
+}
